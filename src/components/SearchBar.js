@@ -3,16 +3,18 @@ import React from 'react';
 const SearchBar = (props) => {
   return (
     <div>
-
       <strong>Sort by:</strong>
+
       <label>
         <input type="radio" value="Alphabetically" checked={props.sorted==='Alphabetically'} onChange={ e => props.sortStocks(e.target.value)}/>
         Alphabetically
       </label>
+
       <label>
         <input type="radio" value="Price" checked={props.sorted==='Price'} onChange={ e => props.sortStocks(e.target.value)}/>
         Price
       </label>
+
       <br/>
 
       <label>
@@ -24,8 +26,7 @@ const SearchBar = (props) => {
           <option value="Finance">Finance</option>
         </select>
       </label>
-
-
+      
     </div>
   );
 }
