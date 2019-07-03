@@ -6,7 +6,7 @@ const PortfolioContainer = function(props) {
     <div>
       <h2>My Portfolio</h2>
       {
-        props.showPortfolio.map((stock, index) => (
+        props.portfolio.map((stock, index) => (
           <div onClick={ e => props.sellStock(stock) }>
             <Stock stock={stock} key={'portfolio-'+index} />
           </div> 

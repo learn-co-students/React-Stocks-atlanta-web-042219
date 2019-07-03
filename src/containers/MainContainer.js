@@ -14,11 +14,11 @@ const MainContainer = function(props) {
       />
       <div className="row">
         <div className="col-8">
-          <StockContainer buyStock={props.buyStock} showStocks={props.showStocks} />
+          <StockContainer buyStock={props.buyStock} stocks={props.stocks} />
         </div>
 
         <div className="col-4">
-          <PortfolioContainer sellStock={props.sellStock} showPortfolio={props.showPortfolio} />
+          <PortfolioContainer sellStock={props.sellStock} portfolio={props.portfolio} />
         </div>
       </div>
     </div>

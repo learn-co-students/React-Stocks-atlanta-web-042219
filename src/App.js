@@ -7,13 +7,16 @@ class App extends Component {
 	state = {
 		stocks: [],
 		portfolio: [],
-		filtered: false,
+		filtered: 'Show All',
 		sorted: false
 	}
 
 	getDisplay = (array)=> {
-		if(this.state.filtered)
+		// filter
+		if(this.state.filtered !== 'Show All')
 			array = array.filter(stock => stock.type === this.state.filtered)
+
+		// sort
 		if(this.state.sorted){
 			if(this.state.sorted === 'Alphabetically')
 				array = array.sort(this.compareName)
@@ -48,10 +51,12 @@ class App extends Component {
       <div>
         <Header/>
         <MainContainer
+        	// state
         	sorted={this.state.sorted}
         	filtered={this.state.filtered}
-        	showStocks={this.getDisplay(this.state.stocks)}
-        	showPortfolio={this.getDisplay(this.state.portfolio)}
+        	stocks={this.getDisplay(this.state.stocks)}
+        	portfolio={this.getDisplay(this.state.portfolio)}
+        	// functions
         	buyStock={this.buyStock}
         	sellStock={this.sellStock}
         	filterStocks={this.filterStocks}

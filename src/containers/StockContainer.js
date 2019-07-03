@@ -6,7 +6,7 @@ const StockContainer = function(props) {
     <div>
       <h2>Stocks</h2>
       { 
-        props.showStocks.map((stock, index) => (
+        props.stocks.map((stock, index) => (
           <div onClick={ e => props.buyStock(stock) }>
             <Stock stock={stock} key={'all-'+index} />
           </div> 
