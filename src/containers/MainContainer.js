@@ -7,7 +7,7 @@ class MainContainer extends Component {
   state = {
     stocks: [],
     myStocks: [],
-    showStocks: [],
+    filter: 'All',
     sort: null
   }
 
@@ -15,6 +15,19 @@ class MainContainer extends Component {
     fetch(`http://localhost:3000/stocks`)
       .then(res => res.json())
       .then(stocks => this.setState({ stocks, showStocks: stocks }))
+  }
+
+  filterStocks = () => {
+    if (this.state.filter === 'All') {
+      return this.state.stocks
+    } else {
+      const stocks = this.state.stocks
+      return stocks.filter(stock => stock.type === this.state.filter)
+    }
+  }
+
+  handleFilter = filter => {
+    this.setState({ filter })
   }
 
   handleBuy = (stock) => {
@@ -47,12 +60,12 @@ class MainContainer extends Component {
   render() {
     return (
       <div>
-        <SearchBar handleSort={this.handleSort} sort={this.state.sort} />
+        <SearchBar handleSort={this.handleSort} sort={this.state.sort} handleFilter={this.handleFilter} />
 
         <div className="row">
           <div className="col-8">
 
-            <StockContainer stocks={this.state.showStocks} handleBuy={this.handleBuy} />
+            <StockContainer stocks={this.filterStocks()} handleBuy={this.handleBuy} />
 
           </div>
           <div className="col-4">
