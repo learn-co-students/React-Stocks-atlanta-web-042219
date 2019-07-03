@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Stock from '../components/Stock'
 
-class StockContainer extends Component {
-
-  render() {
-    return (
-      <div>
-        <h2>Stocks</h2>
-        {
-          //render the list of stocks here
-        }
-      </div>
-    );
-  }
-
+const StockContainer = function(props) {
+  return (
+    <div>
+      <h2>Stocks</h2>
+      { 
+        props.stocks.map((stock, index) => (
+          <div onClick={ e => props.buyStock(stock) }>
+            <Stock stock={stock} key={'all-'+index} />
+          </div> 
+        ))
+      }
+    </div>
+  );
 }
 
 export default StockContainer;

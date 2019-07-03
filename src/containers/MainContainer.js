@@ -1,31 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
+import SearchBar from '../components/SearchBar'
 import StockContainer from './StockContainer'
 import PortfolioContainer from './PortfolioContainer'
-import SearchBar from '../components/SearchBar'
 
-class MainContainer extends Component {
+const MainContainer = function(props) {
+  return (
+    <div>
+      <SearchBar
+        sorted={props.sorted}
+        filtered={props.filtered}
+        filterStocks={props.filterStocks}
+        sortStocks={props.sortStocks}
+      />
+      <div className="row">
+        <div className="col-8">
+          <StockContainer buyStock={props.buyStock} stocks={props.stocks} />
+        </div>
 
-  render() {
-    return (
-      <div>
-        <SearchBar/>
-
-          <div className="row">
-            <div className="col-8">
-
-              <StockContainer/>
-
-            </div>
-            <div className="col-4">
-
-              <PortfolioContainer/>
-
-            </div>
-          </div>
+        <div className="col-4">
+          <PortfolioContainer sellStock={props.sellStock} portfolio={props.portfolio} />
+        </div>
       </div>
-    );
-  }
-
+    </div>
+  );
 }
 
 export default MainContainer;
